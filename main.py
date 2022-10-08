@@ -1,6 +1,4 @@
 import random
-from threading import Thread, Timer
-
 from Question import Question
 from Student import Student
 from Utils import Methods_Utils
@@ -66,39 +64,18 @@ sleep(2)
 
 
 def run_test(questions):
-    main_q = questions
     questions = questions.questions
-    # score = 0
-    print("\n\nYou have 20 multiple choice questions which you must answer within 15 minutes\n\n")
+    score = 0
+    print("\n\nYou have 20 multiple choice questions which you must answer: \n\n")
     sleep(5)
     questions = random.sample(questions, 20)
     for question in questions:
         answer = input(question[0])
         if answer == question[1]:
-            main_q.score += 1
+            score += 1
     print("\nYou have reached the end of the quiz\n")
     sleep(2)
-    print(f"\n\nYou got {main_q.score} / " + str(len(questions)) + " Correct")
+    print(f"\n\nYou got {score} / " + str(len(questions)) + " Correct")
 questions = Question
-
-
-
-# def countdown(questions):
-#
-#     my_timer = 10
-#     for x in range(10):
-#         my_timer = my_timer - 1
-#         sleep(1)
-#
-#     else:
-#
-#         print(questions.score)
-#         print("Out Of Time")
-#
-#
-# countdown_thread1 = Timer(10,countdown(questions))
-# countdown_thread1.start()
-# countdown_thread = Thread(target=run_test(questions))
-# countdown_thread.start()
 
 run_test(questions)
